@@ -1,0 +1,168 @@
+.container_card{
+    background-color: #fff;
+    padding: 25px 50px;
+    width:90%;
+    margin-left: 5%;
+    border: 1px solid #808080;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap:30px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    transition: .3s transform,.3s box-shadow;
+}
+.container_card h3{
+    font-weight: 400;
+    font-size: 20px;
+}
+.container_card h4{
+    font-weight: 350;
+    font-size: 18px;
+}
+.container_card h5{
+    font-weight: 300;
+    font-size: 16px;
+}
+.container_card h4,h5{
+    margin-top: 12px;
+}
+.icons{
+    display: flex;
+    justify-content: center; /* centers content horizontally */
+    align-items: center; 
+}
+.details{
+    display: flex;
+    flex-direction: row;
+}
+.detailss{
+    display: flex;
+    flex-direction: column;
+}
+.profile{
+    position: relative;
+    display: flex;
+    margin: auto;
+    background-color: #fff;
+    border: 1px solid #999;
+    padding: 30px ;
+    border-radius: 50%;
+    margin-right: 12px;
+    transition: .4s ease-in-out;
+    cursor: pointer;
+}
+.profile div{
+    transition: .4s ease-in-out;
+    position: absolute;
+    font-size: 30px;
+    top:18.5%;
+    left: 31%;
+}
+.profile:hover {
+    background-color: #025464;
+    
+}
+.profile:hover .s{
+    color: #fff;
+}
+.icon_remove:hover{
+    color: #fff !important;
+    transform: scale(1.2); /* Increase the size on hover */
+    transition: transform 0.5s ease; /* Add a smooth transition */
+    box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.7);
+    animation: glowing 0.5s infinite;
+    background-color:rgba(255, 0, 0, 0.5);
+    border: none;
+}
+/* .container_card:hover{
+    box-shadow: 3px 3px 13.83px 0.17px rgba(0, 0, 0, 0.25);
+    transform: scale(1.0005);
+} */
+.nocontacts,.loading{
+    width:90%;
+    margin:auto;
+    padding :50px 50px;
+    font-size: 18px;
+    text-align: center;
+    /* background-color: #808080; */
+}
+.updateform {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap:30px;
+    justify-content: space-between;
+}
+.updateformt {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+}
+.updateformt input{
+    padding: 12px;
+    background-color: #e5e5e5;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+}
+.updateforms{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    justify-content: center;
+    align-items: center;
+}
+.updateforms input{
+    padding:12px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    background-color: #025464;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+}
+.edit{
+    padding:12px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    background-color: #f0a500;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+}
+.remove{
+    margin-left: 10px;
+    padding:12px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    background-color: red;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+}
+@media only screen and (max-width:450px){
+    .container_card{
+        padding: 25px 2% 25px 2%;
+        /* width:92%;
+        margin-left: 4%; */
+    }
+    .container_card h3{
+        font-weight: 400;
+        font-size: 18px;
+    }
+    .container_card h4{
+        font-weight: 350;
+        font-size: 16px;
+    }
+    .container_card h5{
+        font-weight: 300;
+        font-size: 14px;
+    }
+}

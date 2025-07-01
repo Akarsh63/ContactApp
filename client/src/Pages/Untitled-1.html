@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drop-Drag</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+   
+
+        body {
+              font-family: Arial, sans-serif;
+              background-color: #243736;
+              margin: 0;
+              padding: 0px;
+            }
+        .container{
+            display:flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding:60px 8%;
+            gap:30px
+        }
+        .items{
+            background-color: #f1f1f1;
+              width:300px;
+              height:100px;
+              margin: auto;     
+              cursor:move;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 12px;
+              font-weight: bold;
+              border:2px solid #0cefe4;
+              color: #555;
+              border-radius: 5px;
+        }
+        .heads{
+            color:aqua;
+            font-size:35px;
+            justify-content:center;
+            text-align: center;
+            padding-top: 70px;
+        
+        }
+        .box{
+            margin-top:50px;
+            width:500px;
+            height:500px;
+            /* margin-left:50px; */
+            background-color: aliceblue;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .box1{
+            margin-top:50px;
+            width:500px;
+            height:500px;
+            /* margin-left:300px; */
+            background-color: aliceblue;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .buttondiv{
+            text-align: center;
+        }
+        .button{
+            width:150px;
+            height:50px;
+            margin:auto;
+            color:rgb(247, 245, 245);
+            background-color: red;
+            font-size:20px;
+        
+        }
+        .hide{
+            display:none;
+        }
+        .drag-over {
+            border: dashed 3px red;
+        }
+        
+        .button:hover {
+          background-color: blue;
+        }
+        @media only screen and (max-width:1240px){
+            .container{
+                padding: 60px 4%;
+            }
+        }
+        @media only screen and (max-width:760px) {
+            .container{
+                flex-direction: column;
+                padding:60px 8%;
+                justify-content: center;
+                align-items: center;
+            }
+
+        }
+        @media only screen and (max-width:586px) {
+           .box,.box1{
+              width:85%;
+              height:auto;
+              height:460px;
+              justify-content: space-around;
+           }
+           .items{
+            width: 80%;
+           }
+
+        }
+        </style>
+</head>
+
+<body>
+    <div class="heads">Drag and Drop</div>
+
+    <div class="container">
+        <div class="box">
+            <div class="items" id="item1" draggable="true">item1</div>
+            <div class="items" id="item2" draggable="true">item2</div>
+            <div class="items" id="item3" draggable="true">item3</div>
+        </div>
+        <div class="box1"></div>
+    </div>
+    <div class="buttondiv">
+        <button class="button">Reset</button>
+    </div>
+    
+
+    <script>
+        const items = document.querySelectorAll('.items');
+        items.forEach(item => {
+            item.addEventListener('dragstart', dragStart);
+        });
+
+        function dragStart(e) {
+            e.dataTransfer.setData('text/plain', e.target.id);
+            setTimeout(() => {
+                e.target.classList.add('hide');
+            }, 0);
+        }
+
+        const boxes = document.querySelectorAll('.box, .box1');
+        boxes.forEach(box => {
+            box.addEventListener('dragenter', dragEnter);
+            box.addEventListener('dragover', dragOver);
+            box.addEventListener('dragleave', dragLeave);
+            box.addEventListener('drop', drop);
+        });
+
+        function dragEnter(e) {
+            e.preventDefault();
+            e.target.classList.add('drag-over');
+        }
+
+        function dragOver(e) {
+            e.preventDefault();
+            e.target.classList.add('drag-over');
+        }
+
+        function dragLeave(e) {
+            e.preventDefault();
+            e.target.classList.remove('drag-over');
+        }
+
+        function drop(e) {
+            e.target.classList.remove('drag-over');
+            const id = e.dataTransfer.getData('text/plain');
+            const draggable = document.getElementById(id);
+            e.target.appendChild(draggable);
+            draggable.classList.remove('hide');
+        }
+
+        const resetButton = document.querySelector('.button');
+        resetButton.addEventListener('click', reset);
+
+        function reset() {
+            
+            const box = document.querySelector('.box');
+            const box1 = document.querySelector('.box1');
+            box.append(...items);
+            box1.innerHTML = '';
+        }
+    </script>
+</body>
+
+</html>
