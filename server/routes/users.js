@@ -56,6 +56,7 @@ router.post('/register',async (req,res)=>{
     // });
     // return res.status(200).json({"Info":{username,password,email}})
 })
+
 router.post('/verifyotp',async(req,res)=>{
     const {username,password,email,otp}=req.body;
     const user =await otpmodel.findOne({email});

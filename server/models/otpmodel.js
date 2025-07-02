@@ -11,4 +11,5 @@ const otpschema=new mongoose.Schema({
     createdAt:{type:Date,default:Date.now,index:{expires:120}}
 })
 
+
 module.exports=otpmodel=mongoose.model('otpmodel', otpschema)

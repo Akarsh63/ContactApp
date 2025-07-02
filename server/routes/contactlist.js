@@ -13,7 +13,7 @@ router.post('/contacts/:userId',async (req,res)=>{
         return element;
       }
       return null;
-    }));
+    }))
     if (filteredContacts.filter(Boolean).length !== 0) {
       console.log("Contact already saved!");
       return res.status(400).json("Contact already saved!");

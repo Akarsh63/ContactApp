@@ -6,7 +6,19 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
-    "prepare": "husky install"
+    "prepare": "cd .. && husky install server/.husky",
+    "configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,json}": [
+      "eslint . --fix",
+      "prettier --write ."
+    ]
   },
   "author": "akarsh",
   "license": "ISC",
@@ -24,6 +36,11 @@
     "otp-generator": "^4.0.1"
   },
   "devDependencies": {
-    "husky": "^8.0.0"
+    "@eslint/js": "^9.30.0",
+    "eslint": "^9.30.0",
+    "globals": "^16.2.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^16.1.2",
+    "prettier": "^3.6.2"
   }
 }
